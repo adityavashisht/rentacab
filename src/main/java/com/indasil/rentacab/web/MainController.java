@@ -15,4 +15,9 @@ public class MainController {
     public String main() {
         return "main";
     }
+
+    @RequestMapping(value="/second", method = RequestMethod.GET)
+    public String second() {
+        return "second";
+    }
 }
