@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class MainService {
 
 
+    @Log
     public void rent() {
         System.out.println("Main Service called");
 
