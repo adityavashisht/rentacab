@@ -11,7 +11,7 @@
     <security:http auto-config="true" authentication-manager-ref="authenticationManager">
 
 
-        <security:intercept-url pattern="/static/**" access="permitAll"/>
+        <security:intercept-url pattern="/static/**" access="permitAll()"/>
 
         <security:intercept-url pattern="/app/**"/>
 
@@ -32,12 +32,19 @@
         <security:authentication-provider>
 
 
-            <security:jdbc-user-service  data-source-ref="datasource"
-                                         role-prefix="none"
+            <security:jdbc-user-service
+                    data-source-ref="datasource"
 
-                                        users-by-username-query="select username,password,enabled from users where username =?"
-                                        authorities-by-username-query="select u.username,a.value from user_authorities ua inner join authority a on a.authority_id= ua.authority_id inner join users u on u.id = ua.user_id WHERE u.username = ?"/>
+
+                    users-by-username-query="select username,password,enabled from users where username =?"
+
+                    authorities-by-username-query="select u.username,a.value from user_authorities ua
+                                                    inner join authority a on a.authority_id= ua.authority_id
+                                                    inner join users u on u.id = ua.user_id WHERE u.username = ?"/>
+
         </security:authentication-provider>
+
+
     </security:authentication-manager>
 
 </beans>
