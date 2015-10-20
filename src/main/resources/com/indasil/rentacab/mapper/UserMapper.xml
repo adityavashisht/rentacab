@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.indasil.rentacab.mapper.UserMapper">
+
+    <resultMap id="loadUserMap" type="com.indasil.rentacab.security.RentCabUser">
+
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+
+
+        <collection property="userAuthorities"
+                    ofType="com.indasil.rentacab.security.Authority">
+
+            <result property="name" column="value"/>
+
+        </collection>
+
+    </resultMap>
+
+
+    <select id="loadUserByUsername" resultMap="loadUserMap" parameterType="map">
+
+            select
+            s.username ,
+            s.password,
+            s.id,
+            r.value
+           from users s
+           left outer join user_authorities u on u.user_id = s.id
+           inner join authority r on u.authority_id =r.authority_id
+           where
+           s.username = #{username}
+
+    </select>
+
+
+</mapper>

@@ -6,4 +6,5 @@
     <import resource="rentacab-mvc.xml"/>
     <import resource="rentacab-security.xml"/>
     <import resource="classpath:rentacab-service.xml"/>
+    <import resource="classpath:rentacab-mybatis.xml"/>
 </beans>

@@ -131,6 +131,19 @@
 
 
         <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.8</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-jcl</artifactId>
             <version>2.2</version>
@@ -166,7 +179,6 @@
             <version>${org.apache.logging.log4j}</version>
         </dependency>
 
-        <!-- end log4j2 -->
 
 
 

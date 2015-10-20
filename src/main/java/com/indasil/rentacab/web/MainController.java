@@ -1,5 +1,7 @@
 package com.indasil.rentacab.web;
 
+import com.indasil.rentacab.security.CurrentUser;
+import com.indasil.rentacab.security.RentCabUser;
 import com.indasil.rentacab.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -21,9 +23,7 @@ public class MainController {
 
 //    @Secured(value = "ROLE_ADMIN")
     @RequestMapping(value="/main", method = RequestMethod.GET)
-    public String main() {
-
-        User user =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String main(@CurrentUser RentCabUser user) {
 
         System.out.println(user.getUsername());
 
