@@ -2,13 +2,13 @@ package com.indasil.rentacab.security;
 
 import com.indasil.rentacab.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
+
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
+
 
 
 /**
@@ -24,11 +24,7 @@ public class RentCabUserDetailManager implements UserDetailsService {
     @Override
     public RentCabUser loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        RentCabUser rentCabUser = userMapper.loadUserByUsername(username);
-
-        Collection<? extends GrantedAuthority> auths = rentCabUser.getAuthorities();
-
-        return rentCabUser;
+       return userMapper.loadUserByUsername(username);
 
     }
 }

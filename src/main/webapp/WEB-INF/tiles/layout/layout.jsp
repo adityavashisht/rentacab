@@ -14,7 +14,10 @@
 <head>
     <title></title>
     <link href="<spring:url value="/static/bootstrap/bootstrap.min.css"/>" rel="stylesheet"/>
+
+    <link href="<spring:url value="/static/datatable/css/dataTables.bootstrap.min.css"/>" rel="stylesheet"/>
     <script src="<spring:url value="/static/jquery/jquery.js"/>"></script>
+    <script src="<spring:url value="/static/datatable/js/jquery.dataTables.min.js"/>"></script>
 </head>
 
 <body>

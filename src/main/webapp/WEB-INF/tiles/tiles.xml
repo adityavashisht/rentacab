@@ -18,6 +18,10 @@
         <put-attribute name="body" value="/WEB-INF/view/main/main.jsp"/>
     </definition>
 
+    <definition name="listCabs" extends="rentLayout">
+        <put-attribute name="body" value="/WEB-INF/view/main/listCabs.jsp"/>
+    </definition>
+
     <definition name="second" extends="rentLayout">
         <put-attribute name="body" value="/WEB-INF/view/main/second.jsp"/>
         <put-attribute name="menu" value="/WEB-INF/view/main/mainMenu.jsp"/>
