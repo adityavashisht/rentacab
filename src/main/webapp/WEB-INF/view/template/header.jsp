@@ -13,4 +13,5 @@
     <title></title>
     <link href="<spring:url value="/static/bootstrap/bootstrap.min.css"/>" rel="stylesheet"/>
     <script src="<spring:url value="/static/jquery/jquery.js"/>"></script>
+
 </head>
