@@ -13,7 +13,7 @@
 
         <security:intercept-url pattern="/static/**" access="permitAll()"/>
 
-        <security:intercept-url pattern="/app/**" access="permitAll()"/>
+        <security:intercept-url pattern="/app/**"/>
 
         <security:form-login login-processing-url="/authenticate"
 
