@@ -12,10 +12,10 @@
     <bean class="com.indasil.rentacab.service.RentLoggerAspect"/>
 
     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="url" value="jdbc:mysql://localhost:3306/rentacab"/>
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="username" value="root"/>
-        <property name="password" value=""/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/rentacab"/>
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="carapace23"/>
     </bean>
 
     <!-- Configure the TX manager -->
