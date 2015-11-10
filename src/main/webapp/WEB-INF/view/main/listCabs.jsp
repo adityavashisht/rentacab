@@ -1,4 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+
 <table id="listCabTable" class="table table-bordered table-striped table-hover">
     <thead>
     <tr>
@@ -18,6 +20,7 @@
         $('#listCabTable').DataTable( {
             "processing": true,
             "serverSide": true,
+            "lengthMenu": [[5, 10], [5, 10]],
 
             "ajax": {
                 "url": "<spring:url value='/app/list/ajax'/>",
@@ -30,7 +33,18 @@
                     return JSON.stringify(d);
                 }
 
-            }
+            },
+            "order": [[1, "asc"]],
+            "columns": [
+                {
+                    "data": "id"
+
+                },
+                {
+                    "data": "model"
+
+                }]
+
 
 
         } );

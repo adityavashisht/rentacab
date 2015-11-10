@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface CabMapper {
 
-    List<Cab> getAll(@Param("pageCriteria") DataTablePageCriteria pageCriteria);
+    List<Cab> getAll(@Param("pageCriteria") DataTablePageCriteria pageCriteria, @Param("searchFilter") String searchFilter);
 }

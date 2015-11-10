@@ -6,6 +6,49 @@
 <mapper namespace="com.indasil.rentacab.mapper.CabMapper">
 
 
+    <select id="getAll" resultType="com.indasil.rentacab.domain.Cab" parameterType="map">
+
+        WITH Cabs AS (
+
+        select
+        c.id as id,
+        c.vehicle_model as model
+
+        from cab c
+        where 1=1
+        <if test="searchFilter !=null">
+            AND
+            (lower(c.vehicle_model) LIKE #{searchFilter})
+        </if>
+
+        ),
+        CabsCount AS (
+        SELECT *, ROW_NUMBER () OVER (
+        <choose>
+            <when test="pageCriteria.getSortOnColumn() == 0">ORDER BY id</when>
+            <when test="pageCriteria.getSortOnColumn() == 1">ORDER BY model</when>
+            <otherwise>
+                ORDER BY id
+            </otherwise>
+        </choose>
+
+        <choose>
+            <when test="pageCriteria.ascending">ASC</when>
+            <otherwise>DESC</otherwise>
+        </choose>
+        ) as RowNumber FROM Cabs
+        )
+        SELECT *, (select COUNT(*) from Cabs) as total
+
+        FROM CabsCount
+
+        WHERE RowNumber &gt; #{pageCriteria.offset}
+        AND RowNumber &lt;= #{pageCriteria.upperRowBound}
+
+        ORDER by RowNumber
+
+
+    </select>
 
 
 </mapper>
