@@ -38,4 +38,66 @@
     </select>
 
 
+    <select id="getAll" resultType="com.indasil.rentacab.security.RentCabUser" parameterType="map">
+
+        WITH AllGridItems AS  (
+
+        -- Business logic goes here
+
+        select id,
+               username,
+        first_name as firstName
+        from users
+        where 1 = 1
+
+        <if test="searchFilter !=null">
+            AND
+            (lower(first_name) LIKE #{searchFilter})
+        </if>
+
+
+
+
+        ) ,
+
+
+
+
+        ItemCount AS (SELECT *, ROW_NUMBER() OVER (
+
+        -- Ordering direction and column go here
+
+        <choose>
+            <when test="pageCriteria.getSortOnColumn() == 0"> order by id</when>
+            <when test="pageCriteria.getSortOnColumn() == 1"> order by username</when>
+            <when test="pageCriteria.getSortOnColumn() == 2"> order by firstName</when>
+            <otherwise>
+                order by id
+            </otherwise>
+        </choose>
+
+        <choose>
+            <when test="pageCriteria.ascending">ASC</when>
+            <otherwise>DESC</otherwise>
+        </choose>
+
+
+
+
+        ) AS RowNumber FROM AllGridItems )
+
+        SELECT *, (SELECT COUNT(*) FROM AllGridItems) AS total
+        FROM ItemCount
+
+        WHERE RowNumber &gt; #{pageCriteria.offset}
+        AND RowNumber &lt;= #{pageCriteria.upperRowBound}
+
+        ORDER BY RowNumber
+
+
+
+
+    </select>
+
+
 </mapper>

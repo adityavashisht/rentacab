@@ -21,33 +21,51 @@ public class RentCabUser implements UserDetails {
     private boolean accountNonExpired = true;
     private boolean accountNonLocked = true;
     private boolean enabled= true;
+    private int total;
+    private String firstName;
 
-    @Override
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+
     public String getUsername() {
         return username;
     }
 
-    @Override
+
     public String getPassword() {
         return password;
     }
 
-    @Override
+
     public boolean isAccountNonExpired() {
         return accountNonExpired;
     }
 
-    @Override
+
     public boolean isAccountNonLocked() {
         return accountNonLocked;
     }
 
-    @Override
+
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    @Override
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -90,7 +108,7 @@ public class RentCabUser implements UserDetails {
         this.enabled = enabled;
     }
 
-    @Override
+
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> auths = new HashSet<GrantedAuthority>();
         if (userAuthorities != null && !userAuthorities.isEmpty()) {

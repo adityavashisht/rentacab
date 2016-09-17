@@ -50,5 +50,31 @@
 
     </select>
 
+    <select id="getAllDataWithSortingPagination">
+          WITH Cabs AS (
+
+
+
+
+            ),
+          CabsCount AS (
+          SELECT *, ROW_NUMBER () OVER (
+
+          ) as RowNumber FROM Cabs
+        )
+        SELECT *, (select COUNT(*) from Cabs) as total
+
+        FROM CabsCount
+
+        WHERE RowNumber > 10
+        AND RowNumber  21
+
+        ORDER by RowNumber
+
+
+
+
+    </select>
+
 
 </mapper>

@@ -23,7 +23,7 @@
             "lengthMenu": [[5, 10], [5, 10]],
 
             "ajax": {
-                "url": "<spring:url value='/app/list/ajax'/>",
+                "url": "<spring:url value='/app/datatable/cab'/>",
                 "type": "POST",
                 "contentType": 'application/json',
                 "dataType": "json",
